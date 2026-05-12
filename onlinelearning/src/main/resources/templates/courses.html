@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Courses</title>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body{
+    font-family:Arial;
+    padding:20px;
+}
+
+.course-card{
+
+    border:1px solid gray;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:10px;
+
+    width:300px;
+
+    display:inline-block;
+
+    vertical-align:top;
+
+    margin-right:20px;
+}
+
+button{
+    padding:10px;
+    background-color:blue;
+    color:white;
+    border:none;
+}
+
+@media(max-width:768px){
+
+    .course-card{
+
+        width:100%;
+    }
+
+    button{
+
+        width:100%;
+    }
+
+    input{
+
+        width:100%;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div>
+
+<a href="/">Home</a> |
+
+<a href="/courses">Courses</a> |
+
+<a href="/mycourses">My Courses</a> |
+
+<a href="/login">
+
+<button onclick="logoutUser()">
+Logout
+</button>
+
+</a>
+
+</div>
+<hr>
+
+
+<input type="text"
+id="searchBox"
+placeholder="Search Courses"
+onkeyup="searchCourses()">
+
+<br><br>
+
+<h1>Available Courses</h1>
+
+<div class="course-card course-item">
+
+<h2>Java Full Stack</h2>
+
+<p>Duration: 8 Weeks</p>
+
+<a href="/course-details">
+
+<button>
+View Details
+</button>
+
+</a>
+
+</div>
+
+<div class="course-card course-item">
+
+<h2>React JS</h2>
+
+<p>Duration: 6 Weeks</p>
+
+<a href="/react-details">
+
+<button>
+View Details
+</button>
+
+</a>
+
+</div>
+
+<div class="course-card course-item">
+
+<h2>Python Programming</h2>
+
+<p>Duration: 5 Weeks</p>
+
+<a href="/course-details">
+
+<button>
+View Details
+</button>
+
+</a>
+
+</div>
+
+<div class="course-card course-item">
+
+<h2>UI/UX Design</h2>
+
+<p>Duration: 4 Weeks</p>
+
+<a href="/course-details">
+
+<button>
+View Details
+</button>
+
+</a>
+
+</div>
+
+<script>
+
+function searchCourses(){
+
+    let input =
+    document.getElementById("searchBox").value.toLowerCase();
+
+    let courses =
+    document.querySelectorAll(".course-item");
+
+    courses.forEach(function(course){
+
+        let text =
+        course.innerText.toLowerCase();
+
+        if(text.includes(input)){
+
+            course.style.display = "block";
+
+        } else {
+
+            course.style.display = "none";
+        }
+    });
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Course Details</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    padding:20px;
+}
+
+button{
+    padding:10px;
+    background-color:blue;
+    color:white;
+    border:none;
+}
+
+</style>
+
+<script>
+function enrollCourse(){
+
+    let courses =
+    JSON.parse(localStorage.getItem("myCourses")) || [];
+
+    if(!courses.includes("Java Full Stack")){
+        courses.push("Java Full Stack");
+    }
+
+    localStorage.setItem("myCourses", JSON.stringify(courses));
+
+    alert("Course Enrolled Successfully!");
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h1>Java Full Stack</h1>
+
+<p>
+Learn Java, Spring Boot, HTML, CSS, JavaScript and MySQL.
+</p>
+
+<p>
+Duration: 8 Weeks
+</p>
+
+<button onclick="enrollCourse()">
+Enroll Now
+</button>
+
+<br><br>
+
+<a href="/mycourses">
+
+<button>
+Go To My Courses
+</button>
+
+</a>
+
+</body>
+</html>

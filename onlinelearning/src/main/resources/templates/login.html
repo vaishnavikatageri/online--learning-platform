@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Login</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    padding:20px;
+}
+
+.login-box{
+    width:300px;
+    border:1px solid gray;
+    padding:20px;
+    border-radius:10px;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+}
+
+button{
+    padding:10px;
+    background-color:blue;
+    color:white;
+    border:none;
+    width:100%;
+}
+
+</style>
+
+</head>s
+
+<body>
+
+<div class="login-box">
+
+<h1>Login</h1>
+
+<input type="text" placeholder="Enter Username">
+
+<input type="password" placeholder="Enter Password">
+
+<button onclick="loginUser()">
+Login
+</button>
+
+<br><br>
+
+<a href="/signup">
+Create New Account
+</a>
+</div> 
+<script>
+
+function loginUser(){
+
+    let enteredUsername =
+    document.querySelector("input[type='text']").value;
+
+    let enteredPassword =
+    document.querySelector("input[type='password']").value;
+
+    let savedUsername =
+    localStorage.getItem("username");
+
+    let savedPassword =
+    localStorage.getItem("password");
+
+    if(enteredUsername == savedUsername &&
+       enteredPassword == savedPassword){
+
+        alert("Login Successful!");
+
+        window.location.href="/courses";
+
+    } else {
+
+        alert("Invalid Username or Password");
+    }
+}
+
+</script>
+</body>
+</html>

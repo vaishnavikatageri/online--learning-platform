@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Signup</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    padding:20px;
+}
+
+.signup-box{
+    width:300px;
+    border:1px solid gray;
+    padding:20px;
+    border-radius:10px;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+}
+
+button{
+    padding:10px;
+    background-color:green;
+    color:white;
+    border:none;
+    width:100%;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="signup-box">
+
+<h1>Signup</h1>
+
+<input type="text" placeholder="Enter Username">
+
+<input type="email" placeholder="Enter Email">
+
+<input type="password" placeholder="Enter Password">
+
+<button onclick="signupUser()">
+Signup
+</button>
+
+</div>
+
+<script>
+
+function signupUser(){
+
+    let username =
+    document.querySelector("input[type='text']").value;
+
+    let email =
+    document.querySelector("input[type='email']").value;
+
+    let password =
+    document.querySelector("input[type='password']").value;
+
+    if(username == "" || email == "" || password == ""){
+
+        alert("Please fill all fields!");
+
+    } else {
+
+        localStorage.setItem("username", username);
+        localStorage.setItem("password", password);
+
+        alert("Signup Successful!");
+
+        window.location.href="/login";
+    }
+}
+
+</script>
+</body>
+</html>

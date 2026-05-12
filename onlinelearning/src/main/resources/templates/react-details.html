@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>React JS</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    padding:20px;
+}
+
+.course-box{
+    border:1px solid gray;
+    padding:20px;
+    border-radius:10px;
+    width:400px;
+}
+
+button{
+    padding:10px;
+    background-color:blue;
+    color:white;
+    border:none;
+}
+
+</style>
+
+<script>
+
+function enrollCourse(){
+
+    let courses =
+    JSON.parse(localStorage.getItem("myCourses")) || [];
+
+    if(!courses.includes("React JS")){
+        courses.push("React JS");
+    }
+
+    localStorage.setItem("myCourses", JSON.stringify(courses));
+
+    alert("React Course Enrolled!");
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="course-box">
+
+<h1>React JS</h1>
+
+<p>
+Learn frontend development using React JS.
+</p>
+
+<p>
+Duration: 6 Weeks
+</p>
+
+<button onclick="enrollCourse()">
+Enroll Now
+</button>
+
+<br><br>
+
+<a href="/mycourses">
+
+<button>
+Go To My Courses
+</button>
+
+</a>
+
+</div>
+
+</body>
+</html>

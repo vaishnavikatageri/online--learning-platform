@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>My Courses</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    padding:20px;
+}
+
+.course{
+    border:1px solid gray;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:10px;
+}
+
+button{
+    padding:10px;
+    background-color:blue;
+    color:white;
+    border:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>My Courses</h1>
+
+<div id="courseContainer"></div>
+
+<script>
+
+let courses = JSON.parse(localStorage.getItem("myCourses")) || [];
+
+let output = "";
+
+courses.forEach(function(course, index){
+
+    output += `
+    <div class="course">
+
+        <h2>${course}</h2>
+
+        <input type="checkbox" onclick="updateProgress(${index})"> Lesson 1 <br><br>
+        <input type="checkbox" onclick="updateProgress(${index})"> Lesson 2 <br><br>
+        <input type="checkbox" onclick="updateProgress(${index})"> Lesson 3 <br><br>
+
+        <p id="progress-${index}">0% Completed</p>
+        
+        
+        <button
+        id="certificate-${index}"
+        style="display:none;"
+        onclick="showCertificate('${course}')">
+
+        Get Certificate
+
+        </button>
+
+    </div>
+    `;
+});
+
+document.getElementById("courseContainer").innerHTML = output;
+
+function updateProgress(courseIndex){
+
+    let courseDiv =
+    document.querySelectorAll(".course")[courseIndex];
+
+    let checkboxes =
+    courseDiv.querySelectorAll("input[type='checkbox']");
+
+    let checked = 0;
+
+    checkboxes.forEach(function(box){
+        if(box.checked){
+            checked++;
+        }
+    });
+
+    let percent = (checked / checkboxes.length) * 100;
+
+    document.getElementById("progress-" + courseIndex)
+    .innerText = percent + "% Completed";
+    if(percent == 100){
+
+        document.getElementById(
+        "certificate-" + courseIndex
+        ).style.display = "block";
+    }
+}
+
+function showCertificate(course){
+
+    alert(
+    "Congratulations! Certificate Generated for " + course
+    );
+}
+
+</script>
+
+</body>
+</html>
